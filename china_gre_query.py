@@ -104,7 +104,7 @@ def main():
         except Exception as e:
             print(e)
             login(browser, user_info)
-        print('Query again after %d second(s)', user_info.query_interval)
+        print('Query again after %d second(s)' % user_info.query_interval)
         time.sleep(user_info.query_interval + random.randint(
             -user_info.query_interval_error, user_info.query_interval_error))
 
