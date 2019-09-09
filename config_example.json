@@ -1,7 +1,7 @@
 {
     "full_result": false,
     "query_interval_error": 30,
-    "query_interval": 60,
+    "query_interval": 120,
     "neea_id": "123456",
     "password": "123456",
     "ym": "2019-10",

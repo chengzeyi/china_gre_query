@@ -90,8 +90,10 @@ def query(browser, user_info):
                     has_seat_list.append('[%s|%s|%s|%s]' % (bjtime, province, city, site_name))
 
     if user_info.full_result:
-        print('<No Seat>: ', no_seat_list)
-    print('<Has Seat>: ', has_seat_list)
+        print('<No Seat>:')
+        print('\n'.join(no_seat_list))
+    print('<Has Seat>:')
+    print('\n'.join(has_seat_list))
 
 
 def main():
