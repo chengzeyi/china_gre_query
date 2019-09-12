@@ -6,7 +6,7 @@ This is a Python script program to query all available seats of ETS' GRE Test in
 
 1. Run `install.sh` or mannually install all the dependencies.
     - Mannual installation is recommended, since the environment of the systems varies.
-    - Prerequisites include Python3, Selenium, Firefox and a driver (geckodriver).
+    - Prerequisites include Python3, Selenium, Pillow, Firefox and a driver (geckodriver).
 2. Rename `config_example.json` to `config.json` and modify it to set your NEEA ID, password, etc.
     - Filter out the cities you choose (just add or remove items in that list, the default list contains all).
     - Choose the month you desire.
