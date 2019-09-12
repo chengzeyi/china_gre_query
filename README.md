@@ -1,6 +1,6 @@
 # china_gre_query.py
 
-This is a python script program to query all available seats of ETS' GRE Test in China.
+This is a Python script program to query all available seats of ETS' GRE Test in China.
 
 ## Usage
 
