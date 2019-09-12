@@ -64,7 +64,7 @@ def query(browser, user_info):
     req_url += '&ym=%s' % user_info.ym
     req_url += '&neeaID=%s' % user_info.neea_id
     req_url += '&cities=%s' % '%3B'.join(user_info.cities)
-    req_url += '&citiesNames=%s' % '%3B'.join(user_info.cities)
+    req_url += '&citiesNames=%s' % '%3B'.join(user_info.cities_names)
     req_url += '&whichFirst=AS'
     req_url += '&isFilter=0'
     req_url += '&isSearch=1'
@@ -89,10 +89,16 @@ def query(browser, user_info):
                     has_seat_list.append('[%s|%s|%s|%s]' % (bjtime, province, city, site_name))
 
     if user_info.full_result:
-        print('<No Seat>:')
-        print('\n'.join(no_seat_list))
-    print('<Has Seat>:')
-    print('\n'.join(has_seat_list))
+        if len(no_seat_list) == 0:
+            print('<The query result of sites without available seats is empty>')
+        else:
+            print('<No Seat>:')
+            print('\n'.join(no_seat_list))
+    if len(has_seat_list) == 0:
+        print('<The query result of sites with available seats is empty>')
+    else:
+        print('<Has Seat>:')
+        print('\n'.join(has_seat_list))
 
 
 def main():
@@ -105,6 +111,7 @@ def main():
         except Exception as e:
             print(e)
             login(browser, user_info)
+            continue
         print('Query again after %d second(s)' % user_info.query_interval)
         time.sleep(user_info.query_interval + random.randint(
             -user_info.query_interval_error, user_info.query_interval_error))
