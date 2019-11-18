@@ -6,7 +6,6 @@ import io
 import time
 import random
 from selenium import webdriver
-from PIL import Image
 
 
 CONFIG_FILE = './config.json'

@@ -1,12 +1,12 @@
-# china_gre_query.py
+# China GRE Query
 
-This is a Python script program to query all available seats of ETS' GRE Test in China.
+This is a Python script to query all available seats of ETS' GRE Test in China.
 
 ## Usage
 
 1. Run `install.sh` or mannually install all the dependencies.
     - Mannual installation is recommended, since the environment of the systems varies.
-    - Prerequisites include Python3, Selenium, Pillow, Firefox and a driver (geckodriver).
+    - Prerequisites include Python3, Selenium, Firefox and a driver (geckodriver).
 2. Rename `config_example.json` to `config.json` and modify it to set your NEEA ID, password, etc.
     - Filter out the cities you choose (just add or remove items in that list, the default list contains all).
     - Choose the month you desire.
@@ -21,3 +21,4 @@ When the script prompts you to enter the check code in the web browser, you are 
 enter the check code in the input text area. Do not press your `ENTER` key on that web page.
 Instead, go back to the CLI and press `ENTER` there and everything will be just fine.
 
+The geckodriver might not work well with a newer version of Firefox.
