@@ -12,9 +12,9 @@ CONFIG_FILE = './config.json'
 BROWSER_WAIT_TIME = 5
 
 HOST = 'gre.etest.net.cn'
-FRONT_PAGE_URL = 'https://' + HOST
-BASE_LOGIN_URL = 'https://' + HOST + '/login.do'
-BASE_QUERY_URL = 'https://' + HOST + '/testSites.do'
+FRONT_PAGE_URL = f'https://{HOST}'
+BASE_LOGIN_URL = f'https://{HOST}/login.do'
+BASE_QUERY_URL = f'https://{HOST}/testSites.do'
 
 
 class UserInfo(object):
@@ -60,10 +60,10 @@ def query(browser, user_info):
     req_url = BASE_QUERY_URL
     req_url += '?p=testSites'
     req_url += '&m=ajax'
-    req_url += '&ym=%s' % user_info.ym
-    req_url += '&neeaID=%s' % user_info.neea_id
-    req_url += '&cities=%s' % '%3B'.join(user_info.cities)
-    req_url += '&citiesNames=%s' % '%3B'.join(user_info.cities_names)
+    req_url += f'&ym={user_info.ym}'
+    req_url += f'&neeaID={user_info.neea_id}'
+    req_url += f"&cities={'%3B'.join(user_info.cities)}"
+    req_url += f"&citiesNames={'%3B'.join(user_info.cities_names)}"
     req_url += '&whichFirst=AS'
     req_url += '&isFilter=0'
     req_url += '&isSearch=1'
@@ -83,17 +83,17 @@ def query(browser, user_info):
                 city = item['city']
                 site_name = site['siteName']
                 if site['realSeats'] == 0:
-                    no_seat_list.append('[%s|%s|%s|%s]' % (bjtime, province, city, site_name))
+                    no_seat_list.append(f'[{bjtime}|{province}|{city}|{site_name}]')
                 else:
-                    has_seat_list.append('[%s|%s|%s|%s]' % (bjtime, province, city, site_name))
+                    has_seat_list.append(f'[{bjtime}|{province}|{city}|{site_name}]')
 
     if user_info.full_result:
-        if len(no_seat_list) == 0:
-            print('<The query result of sites without available seats is empty>')
-        else:
+        if no_seat_list:
             print('<No Seat>:')
             print('\n'.join(no_seat_list))
-    if len(has_seat_list) == 0:
+        else:
+            print('<The query result of sites without available seats is empty>')
+    if not has_seat_list:
         print('<The query result of sites with available seats is empty>')
     else:
         print('<Has Seat>:')
